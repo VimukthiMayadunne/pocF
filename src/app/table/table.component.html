@@ -1,0 +1,7 @@
+<json-table 
+      [dataSource]="dataFromServer"
+      [headers]="customHeaders"
+      [update]="false"
+      (selectRow)="selectedRow($event)"
+      (deleteRow)="deleteByIdS($event)"
+      (updateRow)="updateChanges($event)"></json-table>

@@ -1,0 +1,88 @@
+<body>
+
+    <div class="bg">
+
+<br>
+<br>
+
+<div >
+    <table align="center">
+        <tr>
+          <th colspan="2">API Detalis</th>
+        </tr>
+        <tr>
+          <th scope="col">Swagger Version</th>
+          <td>{{api["0"].swagger}}</td>
+        </tr>
+        <tr>  
+          <th scope="col">Host</th>
+          <td>{{api["0"].host}}</td>
+        </tr>
+        <tr>
+          <th scope="col">basePath</th>
+          <td>{{api["0"].basePath}}</td>
+        </tr>
+        <tr>
+          <th scope="col">Info</th>
+          <td>{{info}}</td>
+        </tr>
+        <tr>
+          <th scope="col">Tags</th>
+          <td>{{tags}}</td>
+        </tr>
+        <tr>
+            <th scope="col">Schemas</th>
+            <td>{{schemes}}</td>
+          </tr>
+        <tr>
+            <th scope="col">Paths</th>
+            <td>{{paths}}</td>
+        </tr>
+        <tr>
+          <th colspan="2">Get Authentication Details</th>
+        </tr>
+        <tr>
+          <th colspan="2">Via Client Credentials grant type</th>
+        </tr>
+        <tr>
+          <td colspan="2">
+              <form [formGroup]="csForm" class="cs-form">
+                  <mat-form-field class="field-full-width">
+                      <input matInput placeholder="Consumer Key" formControlName="ck" #ck>
+                    </mat-form-field>
+                    <br>
+                  <mat-form-field class="field-full-width">
+                    <input matInput placeholder="Consumer Secret" formControlName="cs" #cs>
+                  </mat-form-field>
+                  <mat-divider></mat-divider>
+                  <br><br>
+                  <button type="submit" (click)="gvcs(ck.value,cs.value)" [disabled]="csForm.pristine || csForm.invalid" mat-raised-button color="primary">Get Key</button>
+                </form>
+              </td>
+        </tr>
+        <tr>
+            <th colspan="2">Via Password Grant type</th>
+        </tr>
+        <tr>
+        <td colspan="2">
+            <form [formGroup]="pgForm" class="pg-form">
+                <mat-form-field class="field-full-width">
+                  <input matInput placeholder="User Name" formControlName="uName" #uName>
+                </mat-form-field><br>
+                  <mat-form-field class="field-full-width">
+                      <input matInput type="password" placeholder="Password" formControlName="password" #password>
+                    </mat-form-field>
+                <mat-divider></mat-divider>
+                <br><br>
+                <button type="submit" (click)="gvpg(uName.value, password.value)" [disabled]="pgForm.pristine || pgForm.invalid" mat-raised-button color="primary">Get Key</button>
+            </form>
+        </td>
+      </tr>
+      <tr>
+        <th>API Key</th>
+        <td>{{token}}</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+</body>
