@@ -45,7 +45,7 @@ export class ConfirmationComponent implements OnInit {
     this.ssc.getDetails(this.host).subscribe((data: Api[]) => {
       this.api = data
       //console.log('Data requested ...')
-      //console.log(this.api["0"].schemas)
+      console.log(data)
       //this.loop(data)
       this.getData()
       });
