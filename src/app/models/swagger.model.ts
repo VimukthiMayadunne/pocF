@@ -15,7 +15,7 @@ export interface Api{
         type: Object[],
     },
     schemes:{
-        type: String[],
+        type: [string],
     },
     paths: {
         type: Object,
