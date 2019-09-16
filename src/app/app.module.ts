@@ -17,6 +17,8 @@ import { TableComponent } from './table/table.component';
 
 import { JSONTableModule } from 'angular-json-table';
 import { FormComponent } from './form/form.component';
+//import { NgTableComponent } from './ng-table/ng-table.component';
+
 
 const appRoutes :Routes =[
 {path:'' ,component:AppComponent},
@@ -24,6 +26,7 @@ const appRoutes :Routes =[
 {path:'options',component:OptionsComponent},
 {path: 'table',component:TableComponent},
 {path:'confirm',component:ConfirmationComponent},
+
 ];
 
 @NgModule({
@@ -34,6 +37,7 @@ const appRoutes :Routes =[
     ConfirmationComponent,
     TableComponent,
     FormComponent,
+    //NgTableComponent,
   ],
   imports: [
     BrowserModule,

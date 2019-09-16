@@ -44,10 +44,8 @@ export class ConfirmationComponent implements OnInit {
     this.host=localStorage.getItem('host')
     this.ssc.getDetails(this.host).subscribe((data: Api[]) => {
       this.api = data
-      //console.log('Data requested ...')
-      console.log(data)
-      //this.loop(data)
       this.getData()
+      console.log(data)
       });
   };
 
@@ -67,10 +65,7 @@ export class ConfirmationComponent implements OnInit {
   gvcs({ ck, cs }: { ck: any; cs: any; }) {
     this.ssc.gvcs(ck,cs).subscribe(res => {
       this.key = res
-      console.log("awa awa wa")
       this.token=this.key.access_token
-      console.log(res)
-      console.log("token is")
     });
   }
   
