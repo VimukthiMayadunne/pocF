@@ -11,15 +11,15 @@
         </tr>
         <tr>
           <th scope="col">Swagger Version</th>
-          <td>{{api["0"].swagger}}</td>
+          <td>{{api.swagger}}</td>
         </tr>
         <tr>  
           <th scope="col">Host</th>
-          <td>{{api["0"].host}}</td>
+          <td>{{api.host}}</td>
         </tr>
         <tr>
           <th scope="col">basePath</th>
-          <td>{{api["0"].basePath}}</td>
+          <td>{{api.basePath}}</td>
         </tr>
         <tr>
           <th scope="col">Info</th>
@@ -38,7 +38,11 @@
             <td>{{paths}}</td>
         </tr>
         <tr>
-          <th colspan="2">Get Authentication Details</th>
+          <th colspan="2">Authentication Details</th>
+        </tr>
+        <tr>
+          <th>name</th>
+          <td>{{api["x-customAuth"].name}}</td>
         </tr>
         <tr>
           <th colspan="2">Via Client Credentials grant type</th>

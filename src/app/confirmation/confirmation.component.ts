@@ -16,16 +16,13 @@ import { isArray } from 'util';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent implements OnInit {
-  api: Api[];
-  host:string =null;
-  info:any =null;
-  tags:any=null;
-  schemes:any=null;
+  api: Api;host:string =null;info:any =null;tags:any=null;schemes:any=null;
   paths:any =null;
   apis:object[];
   csForm: FormGroup;
   pgForm: FormGroup;
   key:any;
+  deatils:any
   token:string="Api key";
 
   constructor( private fb: FormBuilder, private route: ActivatedRoute ,private ssc: ServiceService, private router: Router ) { 
@@ -42,18 +39,20 @@ export class ConfirmationComponent implements OnInit {
 }
   ngOnInit() {
     this.host=localStorage.getItem('host')
-    this.ssc.getDetails(this.host).subscribe((data: Api[]) => {
+    this.ssc.getDetails(this.host).subscribe((data: Api) => {
       this.api = data
       this.getData()
-      console.log(data)
+      console.log(this.api)
       });
   };
 
   getData(){
-      this.info=JSON.stringify(this.api["0"].info)
-      this.tags=JSON.stringify(this.api["0"].tags)
-      this.schemes=JSON.stringify(this.api["0"].schemes)
-      this.paths=JSON.stringify(this.api["0"].paths)
+      this.info=JSON.stringify(this.api.info)
+      this.tags=JSON.stringify(this.api.tags)
+      this.schemes=JSON.stringify(this.api.schemes)
+      this.paths=JSON.stringify(this.api.paths)
+      this.deatils=JSON.stringify(this.api["x-customAuth"].description)
+      console.log("Deta:",this.deatils)
   }
   gvpg(uName: any,password: any) {
     this.ssc.gvpg(uName,password).subscribe(res => {
