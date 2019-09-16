@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { JSONTableModule } from 'angular-json-table';
-import { Router} from '@angular/router';
-import { ServiceService} from '../Services/service.service';
+import { ServiceService } from '../Services/service.service';
+import { Router } from '@angular/router';
+import { Api } from '../models/swagger.model'
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-table',
@@ -9,47 +10,63 @@ import { ServiceService} from '../Services/service.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  
-  dataFromServer: any =
-  [{
-    'id': 20,
-    'someFeild1': 'asdfasdf',
-    'someFeild2': 'asdf',
-    'someFeild3': 'asdfasdfasfasdfa',
-    },
-   {
-    'id': 81,
-    'someFeild1': 'aasdfsdf',
-    'someFeild2': 'asasdfdf',
-    'someFeild3': 'dfasfasdfa',
-    }, 
-  ];
-
-  constructor() { }
+  api:Api;
+  host:String;
+  head:String[]=["Name"];
+  body:String[]=["Description"];
+  constructor(private ssc: ServiceService, private router: Router) { }
 
   ngOnInit() {
-  }
-
-  // [headers] are used to define the table head and show what are the feilds required.
-customHeaders: any = {
-  thead: ["."], // the Column Name in table head.
-  displayed: ['someFeild1', 'someFeild2', 'someFeild3'] // the data it should populate in table.
-};
-
-// JSON data can be from any source just need an `id` in order to update and delete. 
-
-  
-  deleteByIdS(row){
-      console.log(row); // Returns the row which is selected by clicking.
-   }
+    this.host=localStorage.getItem('host')
+    this.ssc.getDetails(this.host).subscribe((data: Api) => {
+      this.api = data
+      console.log(this.api)
+      this.objectToArray(this.api)
    
-  deleteByIdSi(ids){
-      console.log(ids); // this function gives the ID of deleted rows.. as an array
+      });
+  }
+
+  objectToArray(api:any) {
+    console.log("Function Called")
+    console.log(api)
+    for(var x in api){
+    try{
+      if(this.isString(api[x])){
+        console.log( "Key:",x," Value:",api[x]);
+        if(x != "_id"){
+          this.head.push(x)
+          this.body.push(api[x])}
+      }
+      else if(this.isObj(api[x])){
+        this.head.push(x)
+        this.body.push("---------------------------")
+        this.objectToArray(api[x])
+        console.log("Cann't Print And Object");
+      }
+    }
+    catch(err){
+      console.log(err)
+      }
+    }
+    console.log("Head Array is:",this.head)
+    console.log("Body Array is:",this.body) 
   }
   
-  updateChanges(row){
-      console.log(row); // This return the row which is updated with the id.
+  
+  isObj(x){
+    if(typeof(x)=="object"){
+      return true
+    }
+    else{
+      return false
+    }
   }
-
+  isString(x){
+    if(typeof(x)=="string" || typeof(x)=="number" || typeof(x)=="boolean"){
+      return true
+    }
+    else{
+      return false
+    }
+  }
 }
-

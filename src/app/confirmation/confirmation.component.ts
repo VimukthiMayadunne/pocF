@@ -83,36 +83,7 @@ export class ConfirmationComponent implements OnInit {
     else{
       return false
     }
-  }
-
-/*
-  loop(ta) {
-    for (let obj of ta) {
-      for (let key in obj) {
-        if(this.isString(obj[key]))
-          console.log("key is:",key ,"obj is:",obj[key])
-        else{
-          for (let obj1 of obj[key]) {
-            let key1:any
-            for (key1 in obj1) {
-              if(isArray(obj1[key1])){
-                for(let i in obj1[key1]){
-                  console.log(obj1[key1][i])
-                }
-
-              }
-            if(this.isString(obj1[key1]))
-                console.log("     key is:",key1 ,"obj is:",obj1[key1])
-        }
-        }
-      }
-
-    }
-    
-*/
-
-
-  
+  }  
 }
 
 
