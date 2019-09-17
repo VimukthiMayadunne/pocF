@@ -22,15 +22,19 @@ export class ConfirmationComponent implements OnInit {
   csForm: FormGroup;
   pgForm: FormGroup;
   key:any;
-  deatils:any
+  deatils:any;
+  url:any;
+  grantType:any;
   token:string="Api key";
 
   constructor( private fb: FormBuilder, private route: ActivatedRoute ,private ssc: ServiceService, private router: Router ) { 
-  
+  // Client Sectret form
   this.csForm = this.fb.group({
     cs: ['', Validators.required],
     ck: ['',Validators.required]
   });
+
+  // Password grant type form
   this.pgForm = this.fb.group({
     uName: ['', Validators.required],
     password: ['',Validators.required],
@@ -52,19 +56,23 @@ export class ConfirmationComponent implements OnInit {
       this.schemes=JSON.stringify(this.api.schemes)
       this.paths=JSON.stringify(this.api.paths)
       this.deatils=JSON.stringify(this.api["x-customAuth"].description)
+      this.grantType=this.api["x-customAuth"].grantType
+      this.url=this.api['x-customAuth'].url
       console.log("Deta:",this.deatils)
   }
-  gvpg(uName: any,password: any) {
-    this.ssc.gvpg(uName,password).subscribe(res => {
+  gvpg(uName: any,password: any ) {
+    this.ssc.gvpg(uName,password,this.api['x-customAuth'].url).subscribe(res => {
       this.key = res
       console.log(res)
       this.token=this.key.access_token
     });
   }
-  gvcs({ ck, cs }: { ck: any; cs: any; }) {
-    this.ssc.gvcs(ck,cs).subscribe(res => {
+  gvcs(ck,cs) {
+    console.log("CK:",ck,"CS",cs)
+    this.ssc.gvcs(ck,cs,this.url).subscribe(res => {
       this.key = res
       this.token=this.key.access_token
+      console.log(res)
     });
   }
   

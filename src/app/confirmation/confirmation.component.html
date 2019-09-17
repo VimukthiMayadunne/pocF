@@ -49,10 +49,13 @@
             <td>{{api["x-customAuth"].grantType}}</td>
         </tr>
         <tr>
-          <th colspan="2">Via Client Credentials grant type</th>
-        </tr>
-        <tr>
-          <td colspan="2">
+          <th>Autorization - URL </th>
+          <td>{{url}}</td>
+      </tr>
+    
+        <tr *ngIf="grantType === 'client_credentias'">
+          <th >Genarate The key Via - {{grantType}}</th>
+          <td>
               <form [formGroup]="csForm" class="cs-form">
                   <mat-form-field class="field-full-width">
                       <input matInput placeholder="Consumer Key" formControlName="ck" #ck>
@@ -67,6 +70,7 @@
                 </form>
               </td>
         </tr>
+        <div *ngIf="grantType === 'passowrd_grant'">
         <tr>
             <th colspan="2">Via Password Grant type</th>
         </tr>
@@ -85,6 +89,7 @@
             </form>
         </td>
       </tr>
+    </div>
       <tr>
         <th>API Key</th>
         <td>{{token}}</td>

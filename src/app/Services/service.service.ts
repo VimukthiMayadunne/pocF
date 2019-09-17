@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Taxi } from '../models/taxi.model';
-import { Observable } from 'rxjs/Observable';
-import { version } from 'punycode';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,19 +45,22 @@ export class ServiceService {
   }
     return this.http.post(`${this.uri}/getdetails`,body)
 }
-gvpg(uName,password){
+gvpg(uName,password,url){
+  
   const body = {
     username:uName,
     password:password
 }
-  return this.http.post(`${this.uri}/token`,body)
+  
+  return this.http.post(`${url}`,body)
 }
-gvcs(ck:any, cs:any ){
+gvcs(ck:any, cs:any ,url:any){
+  console.log("BODY IS:",cs,ck,url)
   const body = {
     ck:ck,
     cs:cs
 }
-  return this.http.post(`${this.uri}/token1`,body)
+  return this.http.post(`${url}`,body)
 }
 
 
