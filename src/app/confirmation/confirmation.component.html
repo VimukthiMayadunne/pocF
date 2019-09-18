@@ -3,7 +3,13 @@
     <div class="bg">
 
 <br>
-<br><div><p>{{api}}</p></div>
+
+<p>
+  <ul>
+  <li><a href="http://localhost:3000/getapi/{{oid}}">Gest the Swagger File</a></li>
+  <li><a routerLink ="/table">View The Swagger File Detailed </a></li>
+</ul>
+<br><br>
 <div >
     <table align="center">
         <tr>
@@ -38,6 +44,9 @@
             <td>{{paths}}</td>
         </tr>
         <tr>
+          <th> Security Definitions </th>
+          <td>{{security}}</td>
+        <tr>
           <th colspan="2">Authentication Details</th>
         </tr>
         <tr>
@@ -52,11 +61,10 @@
           <th>Autorization - URL </th>
           <td>{{url}}</td>
       </tr>
-    
-        <tr *ngIf="grantType === 'client_credentias'">
+        <tr>
           <th >Genarate The key Via - {{grantType}}</th>
           <td>
-              <form [formGroup]="csForm" class="cs-form">
+              <form [formGroup]="csForm" class="cs-form" >
                   <mat-form-field class="field-full-width">
                       <input matInput placeholder="Consumer Key" formControlName="ck" #ck>
                     </mat-form-field>
@@ -65,12 +73,18 @@
                     <input matInput placeholder="Consumer Secret" formControlName="cs" #cs>
                   </mat-form-field>
                   <mat-divider></mat-divider>
+                  <mat-form-field class="field-full-width" >
+                      <input matInput placeholder="User Name" formControlName="uName" #uName>
+                    </mat-form-field><br>
+                      <mat-form-field class="field-full-width">
+                          <input matInput type="password" placeholder="Password" formControlName="password" #password>
+                        </mat-form-field>
+                    <mat-divider></mat-divider>
                   <br><br>
                   <button type="submit" (click)="gvcs(ck.value,cs.value)" [disabled]="csForm.pristine || csForm.invalid" mat-raised-button color="primary">Get Key</button>
                 </form>
               </td>
-        </tr>
-        <div *ngIf="grantType === 'passowrd_grant'">
+        <!--<div *ngIf="grantType === 'passowrd_grant'">
         <tr>
             <th colspan="2">Via Password Grant type</th>
         </tr>
@@ -89,7 +103,7 @@
             </form>
         </td>
       </tr>
-    </div>
+    </div>-->
       <tr>
         <th>API Key</th>
         <td>{{token}}</td>
