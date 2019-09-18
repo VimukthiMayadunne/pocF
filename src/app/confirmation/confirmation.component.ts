@@ -27,12 +27,14 @@ export class ConfirmationComponent implements OnInit {
   url:any;
   grantType:any;
   token:string="Api key";
+  
 
   constructor( private fb: FormBuilder, private route: ActivatedRoute ,private ssc: ServiceService, private router: Router ) { 
   // Client Sectret form
   this.csForm = this.fb.group({
     cs: ['', Validators.required],
     ck: ['',Validators.required],
+    gType: ['',Validators.required],
     uName: ['', ],
     password: ['',],
   });
@@ -49,6 +51,7 @@ export class ConfirmationComponent implements OnInit {
     this.ssc.getDetails(this.host).subscribe((data: Api) => {
       this.oid=data["_id"]
       this.api = data
+      this.grantType=this.csForm.value.gType
       this.getData()
       console.log(data)
       console.log(this.api)
@@ -96,6 +99,9 @@ export class ConfirmationComponent implements OnInit {
     else{
       return false
     }
+  }
+  nef(){
+    console.log(this.csForm)
   }
 }
 
