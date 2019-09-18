@@ -10,13 +10,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { e } from '@angular/core/src/render3';
 import { isArray } from 'util';
 
+
 @Component({
   selector: 'app-confirmation',
   templateUrl: './confirmation.component.html',
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent implements OnInit {
-  api: Api;host:string =null;info:any =null;tags:any=null;schemes:any=null;
+  api: Api;host:string =null;info:any =null;tags:any=null;schemes:any=null;security:any;oid:any;
   paths:any =null;
   apis:object[];
   csForm: FormGroup;
@@ -31,7 +32,9 @@ export class ConfirmationComponent implements OnInit {
   // Client Sectret form
   this.csForm = this.fb.group({
     cs: ['', Validators.required],
-    ck: ['',Validators.required]
+    ck: ['',Validators.required],
+    uName: ['', ],
+    password: ['',],
   });
 
   // Password grant type form
@@ -44,8 +47,10 @@ export class ConfirmationComponent implements OnInit {
   ngOnInit() {
     this.host=localStorage.getItem('host')
     this.ssc.getDetails(this.host).subscribe((data: Api) => {
+      this.oid=data["_id"]
       this.api = data
       this.getData()
+      console.log(data)
       console.log(this.api)
       });
   };
@@ -55,13 +60,13 @@ export class ConfirmationComponent implements OnInit {
       this.tags=JSON.stringify(this.api.tags)
       this.schemes=JSON.stringify(this.api.schemes)
       this.paths=JSON.stringify(this.api.paths)
-      this.deatils=JSON.stringify(this.api["x-customAuth"].description)
-      this.grantType=this.api["x-customAuth"].grantType
-      this.url=this.api['x-customAuth'].url
-      console.log("Deta:",this.deatils)
+      this.deatils=JSON.stringify(this.api["x-customAuth"].details["0"].description)
+      this.grantType=this.api["x-customAuth"].details["0"].grantType
+      this.url=this.api['x-customAuth'].details["0"].url
+      this.security=JSON.stringify(this.api.securityDefinitions)
   }
   gvpg(uName: any,password: any ) {
-    this.ssc.gvpg(uName,password,this.api['x-customAuth'].url).subscribe(res => {
+    this.ssc.gvpg(uName,password,this.api['x-customAuth'].details["0"].url).subscribe(res => {
       this.key = res
       console.log(res)
       this.token=this.key.access_token
@@ -69,7 +74,7 @@ export class ConfirmationComponent implements OnInit {
   }
   gvcs(ck,cs) {
     console.log("CK:",ck,"CS",cs)
-    this.ssc.gvcs(ck,cs,this.url).subscribe(res => {
+    this.ssc.gvcs(ck,cs,this.url,this.grantType).subscribe(res => {
       this.key = res
       this.token=this.key.access_token
       console.log(res)
@@ -91,7 +96,7 @@ export class ConfirmationComponent implements OnInit {
     else{
       return false
     }
-  }  
+  }
 }
 
 

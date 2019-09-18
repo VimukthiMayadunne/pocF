@@ -39,7 +39,6 @@ export class ServiceService {
     return this.http.get(`${this.uri}/delete/${id}`);
   }
   getDetails(host){
-    console.log("*******************")
     const body = {
       host:host
   }
@@ -54,11 +53,12 @@ gvpg(uName,password,url){
   
   return this.http.post(`${url}`,body)
 }
-gvcs(ck:any, cs:any ,url:any){
+gvcs(ck:any, cs:any ,url:any,grantType:any){
   console.log("BODY IS:",cs,ck,url)
   const body = {
     ck:ck,
-    cs:cs
+    cs:cs,
+    grantType:grantType
 }
   return this.http.post(`${url}`,body)
 }

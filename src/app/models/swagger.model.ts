@@ -1,51 +1,66 @@
 export interface Api{
     swagger: {
-        type: Number,
+        type: Number
     },
     info: {
-        type: Object,
+        type: Object
     },
     host:{
-        type: String,
+        type: String
     },
     basePath: {
-        type: String,
+        type: String
     },
     tags: {
-        type: Object[],
+        type: [Object]
     },
     schemes:{
-        type: String[],
+        type: [String]
     },
     paths: {
-        type: Object,
+        type: Object
     },
-    'x-customAuth':{
+    securityDefinitions:{
+        type:Object
+    },
+    'x-customAuth': {
         name:{
             type:String
         },
-        grantType:{
-            type:String
-        }, 
-        parameters:[{
-            name:{
+        details : [
+          {
+            grantType:{
                 type:String
-            }, // clientKey
-            in:{
+            },
+            methord: {
                 type:String
-            }, // body
-            required:{
-                type:Boolean
-            }, //true
-            type:{
+            },
+            parameters: [
+              {
+                name :{
+                    type:String
+                } ,
+                in:{
+                    type:String
+                } ,
+                required :{
+                    type:Boolean
+                } ,
+                type:{
+                    type : String    
+                },
+                description:{
+                    type : String
+                } 
+              }],
+            url:{
                 type:String
-            }, 
-        }],
-        url:{
-            type: String
-        },
-        description:{
-            type: String 
-        },
-    },
+            },
+            encodingType:{
+                type:String
+            },
+            description:{
+                type:String
+            }
+    }]}
 }

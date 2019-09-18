@@ -12,8 +12,9 @@ import { ThrowStmt } from '@angular/compiler';
 export class TableComponent implements OnInit {
   api:Api;
   host:String;
-  head:String[]=["Name"];
+  head:String[]=["Name" ];
   body:String[]=["Description"];
+
   constructor(private ssc: ServiceService, private router: Router) { }
 
   ngOnInit() {
@@ -22,36 +23,34 @@ export class TableComponent implements OnInit {
       this.api = data
       console.log(this.api)
       this.objectToArray(this.api)
-   
+      console.log(this.head)
       });
   }
-
-  objectToArray(api:any) {
-    console.log("Function Called")
-    console.log(api)
-    for(var x in api){
-    try{
-      if(this.isString(api[x])){
-        console.log( "Key:",x," Value:",api[x]);
-        if(x != "_id"){
-          this.head.push(x)
-          this.body.push(api[x])}
-      }
-      else if(this.isObj(api[x])){
+ objectToArray(api:any) {
+  for(var x in api){
+  try{
+    if(this.isString(api[x])){
+      if(x != "_id"){
         this.head.push(x)
-        this.body.push("---------------------------")
-        this.objectToArray(api[x])
-        console.log("Cann't Print And Object");
-      }
+        this.body.push(api[x])}
     }
-    catch(err){
-      console.log(err)
+    else{
+      if(x=='0' || x=='1' || x=='2' ||x=='3' || x=='4' || x=='5' || x=='6'  ){
+        console.log(x,"X is")
       }
+      else{
+        this.head.push(x)
+        this.body.push(" ")
     }
-    console.log("Head Array is:",this.head)
-    console.log("Body Array is:",this.body) 
+      this.objectToArray(api[x])
+    }
   }
   
+  catch(err){
+    console.log(err)
+    }
+  }
+}
   
   isObj(x){
     if(typeof(x)=="object"){

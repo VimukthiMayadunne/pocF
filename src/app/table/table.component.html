@@ -1,8 +1,10 @@
-<p>
-  table works!
-</p>
-<table>
+<br>
+<br>
+<p><a href="http://localhost:3000/getapi/{{oid}}">Gest the Swagger File</a>
+  
+<table id="customers" align="center">
+  <tr><th colspan="2">Swagger File Details</th> 
   <tr *ngFor="let item of body; let i = index">
-    <td>{{head[i]}} </td><td>{{item}}</td>
+    <th>{{head[i]}} </th><td>{{item}}</td>
   </tr>
 </table>
