@@ -1,35 +1,45 @@
-<h3>Genarating The Acsses token</h3>
-<ul *ngFor="let item of head">
-  <li>{{item}}</li>
-</ul>
-
-<table>
+<table align="center">
     <tr>
-        <th >Genarate The key Via - {{gType.value}}</th>
+        <th colspan="2">
+            <h3>Genarating The Acsses token</h3>
+        </th>
     </tr>
     <tr>
+        <td>Available Grant Types</td>
         <td>
-            <form action="http://localhost:3000/token/form" method="post" [formGroup]="csForm" class="cs-form" >
-                <mat-form-field >
-                    <mat-select placeholder="Please Select the Grant Type"   formControlName="gType" #gType>
-                      <div *ngFor="let i of head">
-                      <mat-option value={{i}}>{{i}}</mat-option>
-                      </div>
+            <ul *ngFor="let item of head">
+                <li>{{item}}</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2">Genarate The key Via - {{gType.value}}</th>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <form (ngSubmit)="onSubmit(csForm.value)" [formGroup]="csForm" class="cs-form">
+                <mat-form-field>
+                    <mat-select placeholder="Please Select the Grant Type" formControlName="gType" #gType>
+                        <div *ngFor="let i of head">
+                            <mat-option value={{i}}>{{i}}</mat-option>
+                        </div>
                     </mat-select>
                 </mat-form-field>
-                <button (click)="selectForm(gType.value)">Show Form</button>
+                <button mat-raised-button color="accent" (click)="selectForm(gType.value)" type="button">Show Form</button>
                 <div *ngIf="display">
                     <div *ngFor="let n of grantForm">
-                <mat-form-field class="field-full-width">
-                  
-                    <input formControlName={{n}} #{{n}} matInput placeholder={{n}} ><br>
-                  
-                </mat-form-field>
-              </div>
-                <button type="submit" mat-raised-button color="primary">Get Key</button>
-                <button mat-raised-button color="accent" type="reset">Clear</button>
-              </div>
-              </form>
-            </td>
-      </tr>    
+                        <mat-form-field class="field-full-width">
+                            <input formControlName={{n}} #{{n}} matInput placeholder={{n}}><br>
+                        </mat-form-field>
+                    </div>
+                    <button mat-raised-button color="primary" type="submit">Get Token</button>
+                    <button mat-raised-button color="accent" type="reset">Clear</button>
+                </div>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>API Key</th>
+        <td>{{token}}</td>
+    </tr>
 </table>

@@ -53,12 +53,14 @@ gvpg(uName,password,url){
   
   return this.http.post(`${url}`,body)
 }
-gvcs(ck:any, cs:any ,url:any,grantType:any){
-  console.log("BODY IS:",cs,ck,url)
+gvcs(ck:any, cs:any ,url:any,grantType:any,uName:any,password:any){
+  console.log("BODY IS:",cs,ck,url,)
   const body = {
     ck:ck,
     cs:cs,
-    grantType:grantType
+    grantType:grantType,
+    username:uName,
+    password:password
 }
   return this.http.post(`${url}`,body)
 }

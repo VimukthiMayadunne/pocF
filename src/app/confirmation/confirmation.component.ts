@@ -75,9 +75,11 @@ export class ConfirmationComponent implements OnInit {
       this.token=this.key.access_token
     });
   }
-  gvcs(ck,cs) {
+
+  // Corerect the errors
+  gvcs(ck,cs,uName,password) {
     console.log("CK:",ck,"CS",cs)
-    this.ssc.gvcs(ck,cs,this.url,this.grantType).subscribe(res => {
+    this.ssc.gvcs(ck,cs,this.url,this.grantType,uName,password).subscribe(res => {
       this.key = res
       this.token=this.key.access_token
       console.log(res)

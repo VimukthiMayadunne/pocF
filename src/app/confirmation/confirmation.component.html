@@ -2,94 +2,94 @@
 
     <div class="bg">
 
-<br>
+        <br>
 
-<p>
-  <ul>
-  <li>{{grantType}}</li>
-  <li><a href="http://localhost:3000/getapi/{{oid}}">Gest the Swagger File</a></li>
-  <li><a routerLink ="/table">View The Swagger File Detailed </a></li>
-</ul>
-<br><br>
-<div >
-    <table align="center">
-        <tr>
-          <th colspan="2">API Detalis</th>
-        </tr>
-        <tr>
-          <th scope="col">Swagger Version</th>
-          <td>{{api.swagger}}</td>
-        </tr>
-        <tr>  
-          <th scope="col">Host</th>
-          <td>{{api.host}}</td>
-        </tr>
-        <tr>
-          <th scope="col">basePath</th>
-          <td>{{api.basePath}}</td>
-        </tr>
-        <tr>
-          <th scope="col">Info</th>
-          <td>{{info}}</td>
-        </tr>
-        <tr>
-          <th scope="col">Tags</th>
-          <td>{{tags}}</td>
-        </tr>
-        <tr>
-            <th scope="col">Schemas</th>
-            <td>{{schemes}}</td>
-          </tr>
-        <tr>
-            <th scope="col">Paths</th>
-            <td>{{paths}}</td>
-        </tr>
-        <tr>
-          <th> Security Definitions </th>
-          <td>{{security}}</td>
-        <tr>
-          <th colspan="2">Authentication Details</th>
-        </tr>
-        <tr>
-          <th>name</th>
-          <td>{{api["x-customAuth"].name}}</td>
-        </tr>
-        <tr>
-            <th>grant Type</th>
-            <td>{{api["x-customAuth"].grantType}}</td>
-        </tr>
-        <tr>
-          <th>Autorization - URL </th>
-          <td>{{url}}</td>
-      </tr>
-        <tr>
-          <th >Genarate The key Via - {{grantType}}</th>
-          <td>
-              <form [formGroup]="csForm" class="cs-form" >
-                  <mat-form-field>
-                      <mat-select placeholder="Please Select the Grant Type" formControlName="gType" #gType>
-                        <mat-option value="client_credentials">Client Credentials</mat-option>
-                        <mat-option value="password">Password</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  <mat-form-field class="field-full-width">
-                      <input matInput placeholder="Consumer Key" formControlName="ck" #ck>
-                    </mat-form-field>
-                  <mat-form-field class="field-full-width">
-                    <input matInput placeholder="Consumer Secret" formControlName="cs" #cs>
-                  </mat-form-field>
-                  <mat-form-field class="field-full-width" >
-                      <input matInput placeholder="User Name" formControlName="uName" #uName>
-                  </mat-form-field>
-                  <mat-form-field class="field-full-width">
-                          <input matInput type="password" placeholder="Password" formControlName="password" #password>
-                  </mat-form-field><br>
-                  <button type="submit" (click)="gvcs(ck.value,cs.value)" [disabled]="csForm.pristine || csForm.invalid" mat-raised-button color="primary">Get Key</button>
-                  <button mat-raised-button color="accent" type="reset">Clear</button>
-                  <button (click)="nef()">SHow me</button>
-                </form>
-              </td>
-        <!--<div *ngIf="grantType === 'passowrd_grant'">
+        <p>
+            <ul>
+                <li>{{grantType}}</li>
+                <li><a href="http://localhost:3000/getapi/{{oid}}">Gest the Swagger File</a></li>
+                <li><a routerLink="/table">View The Swagger File Detailed </a></li>
+            </ul>
+            <br><br>
+            <div>
+                <table align="center">
+                    <tr>
+                        <th colspan="2">API Detalis</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Swagger Version</th>
+                        <td>{{api.swagger}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Host</th>
+                        <td>{{api.host}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">basePath</th>
+                        <td>{{api.basePath}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Info</th>
+                        <td>{{info}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Tags</th>
+                        <td>{{tags}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Schemas</th>
+                        <td>{{schemes}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Paths</th>
+                        <td>{{paths}}</td>
+                    </tr>
+                    <tr>
+                        <th> Security Definitions </th>
+                        <td>{{security}}</td>
+                        <tr>
+                            <th colspan="2">Authentication Details</th>
+                        </tr>
+                        <tr>
+                            <th>name</th>
+                            <td>{{api["x-customAuth"].name}}</td>
+                        </tr>
+                        <tr>
+                            <th>grant Type</th>
+                            <td>{{api["x-customAuth"].grantType}}</td>
+                        </tr>
+                        <tr>
+                            <th>Autorization - URL </th>
+                            <td>{{url}}</td>
+                        </tr>
+                        <tr>
+                            <th>Genarate The key Via - {{grantType}}</th>
+                            <td>
+                                <form [formGroup]="csForm" class="cs-form">
+                                    <mat-form-field>
+                                        <mat-select placeholder="Please Select the Grant Type" formControlName="gType" #gType>
+                                            <mat-option value="client_credentials">Client Credentials</mat-option>
+                                            <mat-option value="password">Password</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="field-full-width">
+                                        <input matInput placeholder="Consumer Key" formControlName="ck" #ck>
+                                    </mat-form-field>
+                                    <mat-form-field class="field-full-width">
+                                        <input matInput placeholder="Consumer Secret" formControlName="cs" #cs>
+                                    </mat-form-field>
+                                    <mat-form-field class="field-full-width">
+                                        <input matInput placeholder="User Name" formControlName="uName" #uName>
+                                    </mat-form-field>
+                                    <mat-form-field class="field-full-width">
+                                        <input matInput type="password" placeholder="Password" formControlName="password" #password>
+                                    </mat-form-field><br>
+                                    <button type="submit" (click)="gvcs(ck.value,cs.value)" [disabled]="csForm.pristine || csForm.invalid" mat-raised-button color="primary">Get Key</button>
+                                    <button mat-raised-button color="accent" type="reset">Clear</button>
+                                    <button (click)="nef()">SHow me</button>
+                                </form>
+                            </td>
+                            <!--<div *ngIf="grantType === 'passowrd_grant'">
         <tr>
             <th colspan="2">Via Password Grant type</th>
         </tr>
@@ -109,11 +109,11 @@
         </td>
       </tr>
     </div>-->
-      <tr>
-        <th>API Key</th>
-        <td>{{token}}</td>
-      </tr>
-    </table>
+                            <tr>
+                                <th>API Key</th>
+                                <td>{{token}}</td>
+                            </tr>
+                </table>
+            </div>
     </div>
-  </div>
 </body>

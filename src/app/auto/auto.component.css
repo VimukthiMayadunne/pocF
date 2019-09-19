@@ -1,0 +1,42 @@
+.create-form {
+    min-width: 150px;
+    width: 100%;
+}
+
+.field-full-width {
+    width: 100%;
+}
+
+table {
+    border: 1px solid whitesmoke;
+    width: 80%;
+}
+
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr {
+    background-color: #ddd;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3b5998;
+    color: white;
+}
+
+body,
+html {
+    height: 1080px;
+}
+
+form {
+    background: white;
+    width: 100%;
+    align-self: center;
+    padding: 8px;
+}
