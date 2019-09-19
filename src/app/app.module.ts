@@ -17,6 +17,7 @@ import { MatSortModule,MatToolbarModule, MatFormFieldModule, MatInputModule, Mat
 import { JSONTableModule } from 'angular-json-table';
 import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
+import { AutoComponent } from './auto/auto.component';
 //import { NgTableComponent } from './ng-table/ng-table.component';
 
 
@@ -26,6 +27,7 @@ const appRoutes :Routes =[
 {path:'options',component:OptionsComponent},
 {path:'confirm',component:ConfirmationComponent},
 {path:'table',component:TableComponent},
+{path:'auto',component:AutoComponent},
 
 ];
 
@@ -36,7 +38,8 @@ const appRoutes :Routes =[
     OptionsComponent,
     ConfirmationComponent,
     FormComponent,
-    TableComponent
+    TableComponent,
+    AutoComponent
   ],
   imports: [
     BrowserModule,

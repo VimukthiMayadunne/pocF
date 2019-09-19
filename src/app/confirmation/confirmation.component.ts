@@ -63,13 +63,13 @@ export class ConfirmationComponent implements OnInit {
       this.tags=JSON.stringify(this.api.tags)
       this.schemes=JSON.stringify(this.api.schemes)
       this.paths=JSON.stringify(this.api.paths)
-      this.deatils=JSON.stringify(this.api["x-customAuth"].details["0"].description)
+      this.deatils=JSON.stringify(this.api["x-customAuth"].description)
       this.grantType=this.api["x-customAuth"].details["0"].grantType
-      this.url=this.api['x-customAuth'].details["0"].url
+      this.url=this.api['x-customAuth'].url
       this.security=JSON.stringify(this.api.securityDefinitions)
   }
   gvpg(uName: any,password: any ) {
-    this.ssc.gvpg(uName,password,this.api['x-customAuth'].details["0"].url).subscribe(res => {
+    this.ssc.gvpg(uName,password,this.api['x-customAuth'].url).subscribe(res => {
       this.key = res
       console.log(res)
       this.token=this.key.access_token
