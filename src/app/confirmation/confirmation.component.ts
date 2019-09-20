@@ -32,7 +32,7 @@ export class ConfirmationComponent implements OnInit {
 
   constructor( private fb: FormBuilder, private route: ActivatedRoute ,private ssc: ServiceService, private router: Router ) { 
   // Client Sectret form
-  this.csForm = this.fb.group({
+ /* this.csForm = this.fb.group({
     cs: ['', Validators.required],
     ck: ['',Validators.required],
     gType: ['',Validators.required],
@@ -44,7 +44,7 @@ export class ConfirmationComponent implements OnInit {
   this.pgForm = this.fb.group({
     uName: ['', Validators.required],
     password: ['',Validators.required],
-  });
+  });*/
 
 }
   ngOnInit() {
@@ -52,7 +52,7 @@ export class ConfirmationComponent implements OnInit {
     this.ssc.getDetails(this.host).subscribe((data: Api) => {
       this.oid=data["_id"]
       this.api = data
-      this.grantType=this.csForm.value.gType
+     // this.grantType=this.csForm.value.gType
       this.getData()
       console.log(data)
       console.log(this.api)
@@ -64,13 +64,13 @@ export class ConfirmationComponent implements OnInit {
       this.tags=JSON.stringify(this.api.tags)
       this.schemes=JSON.stringify(this.api.schemes)
       this.paths=JSON.stringify(this.api.paths)
-      this.deatils=JSON.stringify(this.api["x-customAuth"].description)
+      /*this.deatils=JSON.stringify(this.api["x-customAuth"].description)
       this.grantType=this.api["x-customAuth"].details["0"].grantType
-      this.url=this.api['x-customAuth'].url
+      this.url=this.api['x-customAuth'].url*/
       this.security=JSON.stringify(this.api.securityDefinitions)
       this.dataAvailable=true;
   }
-  gvpg(uName: any,password: any ) {
+  /*gvpg(uName: any,password: any ) {
     this.ssc.gvpg(uName,password,this.api['x-customAuth'].url).subscribe(res => {
       this.key = res
       console.log(res)
@@ -87,7 +87,7 @@ export class ConfirmationComponent implements OnInit {
       console.log(res)
     });
   }
-  
+  */
   isObj(x){
     if(typeof(x)=="object"){
       return true
