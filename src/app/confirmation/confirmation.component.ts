@@ -27,6 +27,7 @@ export class ConfirmationComponent implements OnInit {
   url:any;
   grantType:any;
   token:string="Api key";
+  dataAvailable:Boolean=false;
   
 
   constructor( private fb: FormBuilder, private route: ActivatedRoute ,private ssc: ServiceService, private router: Router ) { 
@@ -67,6 +68,7 @@ export class ConfirmationComponent implements OnInit {
       this.grantType=this.api["x-customAuth"].details["0"].grantType
       this.url=this.api['x-customAuth'].url
       this.security=JSON.stringify(this.api.securityDefinitions)
+      this.dataAvailable=true;
   }
   gvpg(uName: any,password: any ) {
     this.ssc.gvpg(uName,password,this.api['x-customAuth'].url).subscribe(res => {

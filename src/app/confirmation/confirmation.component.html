@@ -1,21 +1,15 @@
 <body>
-
     <div class="bg">
-
-        <br>
-
-        <p>
-            <ul>
-                <li>{{grantType}}</li>
-                <li><a href="http://localhost:3000/getapi/{{oid}}">Gest the Swagger File</a></li>
-                <li><a routerLink="/table">View The Swagger File Detailed </a></li>
-            </ul>
-            <br><br>
-            <div>
-                <table align="center">
-                    <tr>
-                        <th colspan="2">API Detalis</th>
-                    </tr>
+        <br><br>
+        <div>
+            <table align="center" *ngIF="dataAvailable">
+                <tr>
+                    <th>API Detalis</th>
+                    <td>
+                        <button mat-stroked-button color="primary"><a  href="http://localhost:3000/getapi/{{oid}}" target="_blank" >Download the Swagger File</a></button>
+                        <button mat-stroked-button color="accent" routerLink="/table">View The Swagger File Detailed</button>
+                        <button mat-stroked-button color="warn" routerLink="/auto">Genarate Accsess Token</button>
+                    </td>
                     <tr>
                         <th scope="col">Swagger Version</th>
                         <td>{{api.swagger}}</td>
@@ -47,10 +41,11 @@
                     <tr>
                         <th> Security Definitions </th>
                         <td>{{security}}</td>
+                    </tr>
+                    <!-- <tr>
                         <tr>
                             <th colspan="2">Authentication Details</th>
                         </tr>
-                        <tr>
                             <th>name</th>
                             <td>{{api["x-customAuth"].name}}</td>
                         </tr>
@@ -108,12 +103,12 @@
             </form>
         </td>
       </tr>
-    </div>-->
+    </div>
                             <tr>
                                 <th>API Key</th>
                                 <td>{{token}}</td>
-                            </tr>
-                </table>
-            </div>
+                            </tr>-->
+            </table>
+        </div>
     </div>
 </body>

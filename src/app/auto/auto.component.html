@@ -25,7 +25,7 @@
                         </div>
                     </mat-select>
                 </mat-form-field>
-                <button mat-raised-button color="accent" (click)="selectForm(gType.value)" type="button">Show Form</button>
+                <button mat-fab color="accent" (click)="selectForm(gType.value)" type="button">Display</button>
                 <div *ngIf="display">
                     <div *ngFor="let n of grantForm">
                         <mat-form-field class="field-full-width">
