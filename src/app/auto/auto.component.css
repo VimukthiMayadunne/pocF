@@ -10,6 +10,7 @@
 table {
     border: 1px solid whitesmoke;
     width: 80%;
+    padding: 20px;
 }
 
 td {
@@ -27,6 +28,7 @@ th {
     text-align: left;
     background-color: #3b5998;
     color: white;
+    padding-left: 15px;
 }
 
 body,
@@ -39,4 +41,8 @@ form {
     width: 100%;
     align-self: center;
     padding: 8px;
+}
+
+button {
+    margin: 15px;
 }

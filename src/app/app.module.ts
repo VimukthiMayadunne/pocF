@@ -9,13 +9,12 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 import { ServiceService} from './Services/service.service';
-import { DroplocationComponent } from './droplocation/droplocation.component';
 import { OptionsComponent } from './options/options.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { MatSortModule,MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule } from '@angular/material';
 
 import { JSONTableModule } from 'angular-json-table';
-import { FormComponent } from './form/form.component';
+//import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 import { AutoComponent } from './auto/auto.component';
 //import { NgTableComponent } from './ng-table/ng-table.component';
@@ -23,7 +22,6 @@ import { AutoComponent } from './auto/auto.component';
 
 const appRoutes :Routes =[
 {path:'' ,component:AppComponent},
-{path:'drop',component:DroplocationComponent},
 {path:'options',component:OptionsComponent},
 {path:'confirm',component:ConfirmationComponent},
 {path:'table',component:TableComponent},
@@ -34,10 +32,9 @@ const appRoutes :Routes =[
 @NgModule({
   declarations: [
     AppComponent,
-    DroplocationComponent,
     OptionsComponent,
     ConfirmationComponent,
-    FormComponent,
+    //FormComponent,
     TableComponent,
     AutoComponent
   ],
